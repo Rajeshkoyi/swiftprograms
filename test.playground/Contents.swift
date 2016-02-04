@@ -66,6 +66,9 @@ class TestClass{
 
     func isDateValid(date:Int,month:Int,year:Int)->Bool {
         
+        let endDate=[0,31,28,31,30,31,30,31,31,30,31,30,31]
+
+        
         if 1>month||month>12
         {
             return false
@@ -82,10 +85,14 @@ class TestClass{
             }
         }
         else {
-            if(1<=month)
-            {
-                days=31
+            for index in 0..<endDate.count {
+                
+                if(month==index+1)
+                {
+                    days=endDate[index+1]
+                }
             }
+            
             
         }
         if date<1||date>days
