@@ -5,14 +5,15 @@ class TestClass{
     
     func gcd(x:Int,y:Int)->Int {
         var i = 1;
-        var rem=0;
+        var remainder=0;
         for i=1;i<=x||i<=y; i++ {
             if x%i==0&&y%i==0 {
-                rem=i
+                remainder = i
             }
         }
-        return rem
-    }
+        return remainder
+        
+    }//end of gcd function
     
    
     
@@ -27,11 +28,11 @@ class TestClass{
             return fact
         }
         
-        
         let result = factorial(a)/(factorial(b)*factorial(a-b))
         
         return result
-    }
+    }// end of ncr function
+    
     
     func isPrime(x:Int) ->Bool{
         
@@ -102,7 +103,7 @@ let test = TestClass()
 
 test.isPrime(7)
 
-test.isDateValid(4, month: 2, year: 2016)
+test.isDateValid(29, month: 2, year: 1984)
 
 test.gcd(54, y: 24)
 
