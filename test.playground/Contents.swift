@@ -66,7 +66,7 @@ class TestClass{
 
     func isDateValid(date:Int,month:Int,year:Int)->Bool {
         
-        let endDate=[0,31,28,31,30,31,30,31,31,30,31,30,31]
+        let DaysOfMonth=[0,31,28,31,30,31,30,31,31,30,31,30,31]
 
         
         if 1>month||month>12
@@ -85,11 +85,11 @@ class TestClass{
             }
         }
         else {
-            for index in 0..<endDate.count {
+            for index in 1..<DaysOfMonth.count {
                 
-                if(month==index+1)
+                if(month==index)
                 {
-                    days=endDate[index+1]
+                    days=DaysOfMonth[index]
                 }
             }
             
@@ -110,7 +110,7 @@ let test = TestClass()
 
 test.isPrime(7)
 
-test.isDateValid(29, month: 2, year: 1984)
+test.isDateValid(31, month: 1, year: 2016)
 
 test.gcd(54, y: 24)
 
