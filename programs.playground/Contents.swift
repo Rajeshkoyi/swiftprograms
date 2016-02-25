@@ -74,6 +74,8 @@ struct Test {
         let num = (n.num * m.den) + (n.den * m.num)
         let den = n.den*m.den
         
+        assert(den > 0," denominator lessthen zero")
+        
         let div = gcd(abs(num), y:abs( den))
         return "\(num/div) / \(den/div) "
         
@@ -82,6 +84,9 @@ struct Test {
         
         let num = (n.num * m.den) - (n.den * m.num)
         let den = n.den*m.den
+        
+        assert(den > 0," denominator lessthen zero")
+        
         let div = gcd(abs(num), y:abs( den))
         
         return "\(num/div) / \(den/div) "
@@ -90,18 +95,26 @@ struct Test {
     }
     func mul(m: Test)->String{
         let num = (n.num * m.den)*(n.den * m.num)
-        let den = n.den*m.den
         
-        let div = gcd(abs(num), y:abs( den))
-        return "\(num/div) / \(den/div) "
+            let den = n.den*m.den
+
+                assert(den > 0," denominator lessthen zero")
+        
+            let div = gcd(abs(num), y:abs( den))
+        
+         return "\(num/div) / \(den/div) "
         
     }
     func div(m: Test)->String{
         
         let num = n.num*m.den
-        let den = n.den*m.num
         
-        let div = gcd(abs(num), y:abs( den))
+         let den = n.den*m.num
+        
+          assert(den > 0," denominator lessthen zero")
+
+          let div = gcd(abs(num), y:abs( den))
+        
         return "\(num/div) / \(den/div) "
         
     }
