@@ -19,16 +19,12 @@ struct Point {
         self.y = pointB.y
     }
     
-    func distanceTo(point:Point)->Double {
+    func distanceTo(pointB:Point)->Double {
         
         
-        let a=abs(self.x-point.x)
         
-        let b=abs(self.y-point.y)
         
-        let c=sqrt(a*a+b*b)
-        
-        return c
+        return sqrt(pow((pointA.x - pointB.x),2) + pow((pointA.y-pointB.y),2))
         
     }
 }
@@ -48,108 +44,52 @@ pointA.distanceTo(pointC)
 
 /*------------------Rational numbers--------------------------*/
 
-struct Test {
-    
-    var num:Int
-    var den:Int
-    
-    
-    init(num:Int,den:Int)
-    {
-        self.num=num
-        self.den=den
-    }
-    func gcd( x:Int, y:Int)->Int{
-        
-        var i = 1;
-        var rem=0;
-        for i=1;i<=x||i<=y;i++ {
-            if x%i==0&&y%i==0 {
-                rem=i
-            }
-        }
-        return rem
-    }
-    func add(m: Test)->String{
-        let num = (n.num * m.den) + (n.den * m.num)
-        let den = n.den*m.den
-        
-        assert(den > 0," denominator lessthen zero")
-        
-        let div = gcd(abs(num), y:abs( den))
-        return "\(num/div) / \(den/div) "
-        
-    }
-    func sub(m: Test)->String{
-        
-        let num = (n.num * m.den) - (n.den * m.num)
-        let den = n.den*m.den
-        
-        assert(den > 0," denominator lessthen zero")
-        
-        let div = gcd(abs(num), y:abs( den))
-        
-        return "\(num/div) / \(den/div) "
-        
-        
-    }
-    func mul(m: Test)->String{
-        let num = (n.num * m.den)*(n.den * m.num)
-        
-            let den = n.den*m.den
+struct Ratio {
 
-                assert(den > 0," denominator lessthen zero")
+    var numinator:Int=0
+    var denominator:Int=0
+    
+    init(numinator:Int, denominator:Int) {
+    
+        self.numinator=numinator
+        self.denominator=denominator
+   }
+    
+    func add(r2: Ratio)->Ratio {
         
-            let div = gcd(abs(num), y:abs( den))
-        
-         return "\(num/div) / \(den/div) "
-        
+        return Ratio(numinator: (r1.numinator * r2.denominator + r1.denominator * r2.numinator), denominator:(r1.denominator * r2.denominator ) )
     }
-    func div(m: Test)->String{
+    
+    func sub(r2: Ratio)->Ratio {
         
-        let num = n.num*m.den
+        return Ratio(numinator: (r1.numinator * r2.denominator - r1.denominator * r2.numinator), denominator:(r1.denominator * r2.denominator ) )
+    }
+    
+    func mul(r2: Ratio)->Ratio {
         
-         let den = n.den*m.num
+        return Ratio(numinator: (r1.numinator  * r2.numinator), denominator:(r1.denominator * r2.denominator ) )
+    }
+    
+    func div(r2: Ratio)->Ratio {
         
-          assert(den > 0," denominator lessthen zero")
+        return Ratio(numinator: (r1.numinator * r2.denominator ), denominator:(r1.denominator * r2.numinator ) )
+    }
 
-          let div = gcd(abs(num), y:abs( den))
-        
-        return "\(num/div) / \(den/div) "
-        
-    }
-    func compareTo(m: Test)->Int{
-        let num = n.num/n.den
-        let den = m.num/m.den
-        if num > den {
-            return 1
-        }
-        else if num < den {
-            return -1
-        }
-        else{
-            
-            return 0
-            
-        }
-        
-    }
+
+
+
 }
-let n=Test(num: 1, den: 5)
 
-let m=Test(num: 2, den: 5)
+var r1 = Ratio(numinator: 1, denominator: 2)
+var r2 = Ratio(numinator: 3, denominator: 4)
 
-print("\(n.num)/\(n.den) + \(m.num)/\(m.den)  =  \(n.add(m))\n")//1/5 + 2/5  =  3 / 5
-
-
-print("\(n.num)/\(n.den) - \(m.num)/\(m.den)  =  \(n.sub(m))\n")//1/5 - 2/5  =  -1 / 5
-
-
-print("\(n.num)/\(n.den) * \(m.num)/\(m.den)  =  \(n.mul(m))\n")//1/5 * 2/5  =  -1 / 5
+print(r1.add(r2))
+print(r1.sub(r2))
+print(r1.mul(r2))
+print(r1.div(r2))
 
 
-print("\(n.num)/\(n.den) / \(m.num)/\(m.den)  =  \(n.div(m))\n")//1/5 / 2/5  =  -1 / 5
 
 
-print("(\(n.num)/\(n.den))compareTo( \(m.num)/\(m.den))  =  \(n.compareTo(m))")//(1/5)compareTo( 2/5)  =  0
+
 
