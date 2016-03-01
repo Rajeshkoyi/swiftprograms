@@ -27,3 +27,5 @@ let result = isPrime(n)
 
 print(result)
 
+assert(isPrime(1))
+
